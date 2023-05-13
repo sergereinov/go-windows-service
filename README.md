@@ -18,9 +18,9 @@ All that the wrapper does is:
 - sets a panic handler before calling the nested function
 - sets signal handlers for graceful shutdown the application
 
-See [entry_linux.go](https://github.com/sergereinov/go-windows-service/blob/main/entry_linux.go) file.
+See [entry_other.go](https://github.com/sergereinov/go-windows-service/blob/main/entry_other.go) file.
 
-### Example
+### Examples
 ```go
 package main
 
@@ -61,6 +61,9 @@ func main() {
 	})
 }
 ```
+
+Examples in projects that use this library:
+- https://github.com/sergereinov/nf-svc
 
 ## Similar Projects
 - https://github.com/judwhite/go-svc

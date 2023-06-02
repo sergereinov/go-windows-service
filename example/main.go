@@ -23,6 +23,7 @@ func main() {
 	logfile := filepath.Join(filepath.Dir(exec), ServiceName+".log")
 	logToConsole := service.IsDebugMode()
 	logger := logger.New(logfile, logToConsole)
+	defer logger.Close()
 
 	// Run service wrapper
 	service.Service{

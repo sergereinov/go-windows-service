@@ -21,7 +21,7 @@ func main() {
 	// Example of initializing a file-logger with output to the console in debug mode
 	exec, _ := os.Executable()
 	logfile := filepath.Join(filepath.Dir(exec), ServiceName+".log")
-	logToConsole := service.IsDebugMode()
+	logToConsole := service.IsCliOperations()
 	logger := logger.New(logfile, logToConsole)
 	defer logger.Close()
 

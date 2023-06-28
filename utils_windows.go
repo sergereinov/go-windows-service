@@ -5,6 +5,7 @@ package service
 import (
 	"os"
 
+	"golang.org/x/exp/slices"
 	"golang.org/x/sys/windows/svc"
 )
 
@@ -23,6 +24,20 @@ func IsDebugMode() bool {
 	}
 
 	return true
+}
+
+func IsCliOperations() bool {
+	isInService, err := svc.IsWindowsService()
+	if isInService || err != nil {
+		return false
+	}
+
+	if len(os.Args) < 2 {
+		return false
+	}
+
+	knownCli := []string{"/i", "/u", "/d"}
+	return slices.Contains(knownCli, os.Args[1])
 }
 
 func AdditionalArgs() []string {
